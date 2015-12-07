@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Recipes</title>
+    <script src= "/angular/angular.min.js"></script>
+    <script src= "/angular-ui-router/build/angular-ui-router.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src= "/app.js"></script>
+    <script src= "/factories/aFactory.js"></script>
+    <script src= "/controllers/home.js"></script>
+
+
+  </head>
+  <body ng-app="barnecue">
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-items">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">My Recipes</a>
+        </div>
+        <div id="nav-items" class="collapse navbar-collapse" ng-controller="HomeController">
+          <ul class="nav navbar-nav">
+            <li><a href="/recipes">Home</a></li>
+            <li><a href="/recipes/add">Add New Recipe</a></li>
+            <li><a href="/search">Recipe Search</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/about">{{narf}}</a></li>
+            <li><a><button ng-click"getPoint()">{{getPoint()}}</button></a>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container content">
+        <h3>Recipe</h3>
+        <hr>
+        <form method="GET" action="/wiki/search">
+          <input type="text" name="search" />
+          <button type="submit">Search</button>
+        </form>
+        <hr>
+        <ul class="list-unstyled">
+          <ul>
+            <li>Here you'll use an ng repeat to loop through the recipes</li>
+          </ul>
+        </ul>
+    </div>
+
+    <div id="footer" class="container text-muted">
+      Barneque Recipes by Dyke MeaNatale
+    </div>
+  </body>
+</html>
