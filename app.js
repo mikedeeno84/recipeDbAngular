@@ -15,8 +15,12 @@ app.use(express.static(__dirname + '/browser'));
 
 app.get("/", function (req, res, next){
     res.sendFile(path.join(__dirname, "public/views/index.html"))
-})
-// app.use('/api', require('./routes'));
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/api', require('./routes/api'));
 
 // custom error handling to remove stack trace
 app.use(function (req, res, next) {
@@ -40,7 +44,6 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-app.listen(3001, function() {
-    console.log("server listening on port 3001..");
+app.listen(3000, function() {
+    console.log("server listening on port 3000..");
 });
-module.exports = app;

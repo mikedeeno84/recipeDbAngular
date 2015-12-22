@@ -1,0 +1,14 @@
+<h1>{{recipe.title}}</h1>
+<label>Servings</label>
+<input type="number" ng-model="servings" placeholder="{{recipe.servings}}"/>
+<button ng-click="clickme()">update</button>
+<p>Total Time: {{recipe.total_time}}</p>
+<p>Prep Time: {{recipe.prep_time}}</p>
+<p>Cook Time: {{recipe.cook_time}}</p>
+<p>{{recipe.author}}</p>
+<h3>Ingredients</h3>
+<ul>
+<li ng-repeat="ingredient in recipe.ingredients track by $index">{{showIngredient(ingredient)}} {{ingredient.ingredient}}</li>
+</ul>
+<h2>Instructions</h2>
+<p>{{recipe.instructions}}</p>

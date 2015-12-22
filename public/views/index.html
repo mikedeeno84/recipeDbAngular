@@ -9,52 +9,27 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <script src= "/app.js"></script>
-    <script src= "/factories/aFactory.js"></script>
-    <script src= "/controllers/home.js"></script>
+    <script src= "/factories/recipefactory.js"></script>
+    <script src= "/states/home.js"></script>
+    <script src= "/states/addrecipe.js"></script>
+    <script src= "/states/recipeview.js"></script>
+    <script src= "/components/navbar.js"></script>
+    <script src= "/components/sidebar.js"></script>
+    <script src= "/components/recipeitem.js"></script>
+    <script src= "/components/footer.js"></script>
+
 
 
   </head>
   <body ng-app="barnecue">
-    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-items">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">My Recipes</a>
-        </div>
-        <div id="nav-items" class="collapse navbar-collapse" ng-controller="HomeController">
-          <ul class="nav navbar-nav">
-            <li><a href="/recipes">Home</a></li>
-            <li><a href="/recipes/add">Add New Recipe</a></li>
-            <li><a href="/search">Recipe Search</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/about">{{narf}}</a></li>
-            <li><a><button ng-click"getPoint()">{{getPoint()}}</button></a>
-          </ul>
-        </div>
-      </div>
+    <navbar></navbar>
+    <div class="col-xs-2">
+      <sidebar></sidebar>
     </div>
-    <div class="container content">
-        <h3>Recipe</h3>
-        <hr>
-        <form method="GET" action="/wiki/search">
-          <input type="text" name="search" />
-          <button type="submit">Search</button>
-        </form>
-        <hr>
-        <ul class="list-unstyled">
-          <ul>
-            <li>Here you'll use an ng repeat to loop through the recipes</li>
-          </ul>
-        </ul>
+    <div class="col-xs-10">
+      <ui-view></ui-view>
     </div>
+    <footer></footer>
 
-    <div id="footer" class="container text-muted">
-      Barneque Recipes by Dyke MeaNatale
-    </div>
   </body>
 </html>

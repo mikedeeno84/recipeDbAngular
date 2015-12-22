@@ -3,6 +3,11 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/recipes');
 mongoose.connection.on('error', console.error.bind(console, 'MongoDb connection error: '));
 
+var ingredientSchema = new mongoose.Schema({
+	quantity: {type: String},
+	ingredient: {type: String}
+
+})
 
 var recipeSchema = new mongoose.Schema({
 	title: {type: String, required: true},
@@ -10,7 +15,11 @@ var recipeSchema = new mongoose.Schema({
 	author: {type: String},	
 	lastUpdatedAt: {type: Date, default: Date.now },
 	dateCreated : {type: Date, default: Date.now },	
-	ingredients: {type: [String], required: true}
+	ingredients: {type: [ingredientSchema], required: true},
+	total_time: {type: String},
+	prep_time: {type: String},
+	cook_time: {type: String},
+	servings: {type: Number}
 });
 
 
@@ -28,4 +37,4 @@ function tagReturner (tags){
 
 
 var Recipe = mongoose.model('Recipe', recipeSchema);
-module.exports = Recipe;
+module.exports = {Recipe: Recipe};
