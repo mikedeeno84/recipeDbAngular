@@ -29,11 +29,12 @@ return rp(siteURL)
 	if (propertyInfo[0]) properties["Prep"]=propertyInfo[0];
 	if (propertyInfo[1]) properties["Cook"]=propertyInfo[1];
 
-	var name = $('submitter__name').text()
+	var name = $('.submitter__name').text()
 
-	var servings = parseInt($('.servings-count').text());
-
-	var recipe = {servings: servings, title: title, instructions: directions, author:name, ingredients:ingredients, total_time: properties['Total Time'], prep_time: properties['Prep'], cook_time:properties['Cook']};
+	var servings = parseInt($('#metaRecipeServings')[0].content)
+	var recipe = {title: title, instructions: directions, author:name, ingredients:ingredients, total_time: properties['Total Time'], prep_time: properties['Prep'], cook_time:properties['Cook']};
+	if (servings) recipe.servings=servings
+	console.log(site)
 return recipe;
 }).then(null, console.err)	
 }

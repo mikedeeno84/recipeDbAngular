@@ -27,7 +27,7 @@ app.factory('recipeFactory', function ($http){
 	fact.postByUrl = function(recipeUrl, recipeHost){
 
 		var recipeFactory = this;
-
+		console.log(recipeHost)
 		return $http.post('api/recipes/fromsite/' + recipeHost, {url: recipeUrl})
 		.then(function(response){
 			recipeFactory.cachedRecipes.push(response.data)
@@ -38,9 +38,9 @@ app.factory('recipeFactory', function ($http){
 	fact.parseUrl = function(recipeUrl){
 		var recipeFactory = this;
 		if(!recipeUrl) return;
-		var splitURL = recipeUrl.match(":\/\/(.[^\/]+)(.*)")[1].split('.');
+		var splitURL = recipeUrl.split('.');
 		console.log(splitURL)
-		if (splitURL.indexOf("allrecipes") > -1) return "allrecipes";
+		if (splitURL.indexOf("http://allrecipes") > -1 || splitURL.indexOf("allrecipes") > -1) return "allrecipes";
 		if (splitURL.indexOf("foodnetwork") > -1) return "foodnetwork";
 		if (splitURL.indexOf("food") > -1) return "food";
 		if (splitURL.indexOf("yummly") > -1) return "yummly";

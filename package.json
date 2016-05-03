@@ -4,7 +4,8 @@
   "description": "a",
   "main": "a",
   "scripts": {
-    "test": "a"
+    "test": "a",
+    "start": "nodemon app"
   },
   "repository": {
     "type": "git",
