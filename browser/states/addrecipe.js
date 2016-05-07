@@ -2,17 +2,17 @@ app.config(function($stateProvider){
 	$stateProvider.state('add',{
 		url: '/recipes/add',
 		templateUrl: '/templates/addrecipe.html',
-		controller: function($scope, recipeFactory, $state){
-			$scope.postRecipe = function(){
+		controller: function($scope, Recipes, $state){
+			$scope.post = function(){
 				console.log($scope.recipe)
-				// recipeFactory.postRecipe($scope.recipe)
+				// Recipes.post($scope.recipe)
 				// .then(function(newRecipe){
 				// 	$state.go('recipe', {recipeId: newRecipe._id})
 				// })
 			};
 			$scope.postUrl = function() {
 				// console.log($scope.urlHost())
-				recipeFactory.postByUrl($scope.recipeUrl, $scope.urlHost())
+				Recipes.postByUrl($scope.recipeUrl, $scope.urlHost())
 				.then(function(newRecipe){
 					$state.go('recipe', {recipeId: newRecipe._id})
 				});
@@ -24,7 +24,7 @@ app.config(function($stateProvider){
 				if ($scope.urlHost) return true;
 			}
 			$scope.urlHost = function(){
-				return recipeFactory.parseUrl($scope.recipeUrl)
+				return Recipes.parseUrl($scope.recipeUrl)
 			}
 			$scope.recipe = {};
 			$scope.recipe.ingredients=[""];

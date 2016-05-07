@@ -1,7 +1,4 @@
-
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/recipes');
-mongoose.connection.on('error', console.error.bind(console, 'MongoDb connection error: '));
 
 var ingredientSchema = new mongoose.Schema({
 	quantity: {type: Number},
@@ -19,7 +16,8 @@ var recipeSchema = new mongoose.Schema({
 	total_time: {type: String},
 	prep_time: {type: String},
 	cook_time: {type: String},
-	servings: {type: Number}
+	servings: {type: Number},
+	imageUrl:{type:String}
 });
 
 

@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>My Recipes</title>
-    <script src= "/angular/angular.min.js"></script>
-    <script src= "/angular-ui-router/build/angular-ui-router.min.js"></script>
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/style.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src= "/app.js"></script>
-    <script src= "/factories/recipefactory.js"></script>
-    <script src= "/states/home.js"></script>
-    <script src= "/states/addrecipe.js"></script>
-    <script src= "/states/recipeview.js"></script>
-    <script src= "/components/navbar.js"></script>
-    <script src= "/components/sidebar.js"></script>
-    <script src= "/components/recipeitem.js"></script>
-    <script src= "/components/footer.js"></script>
 
+<head>
+  <base href="/" />
+  <title>My Recipes</title>
+  <script src="/angular/angular.min.js"></script>
+  <script src="/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/angular-animate/angular-animate.min.js"></script>
+  <script src="/angular-aria/angular-aria.min.js"></script>
+  <script src="/angular-messages/angular-messages.min.js"></script>
+  <script src="/angular-material/angular-material.min.js"></script>
+  <script src="/angular-route/angular-route.min.js"></script>
+  <link href="/angular-material/angular-material.min.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="/app.js"></script>
+  <script src="/factories/recipefactory.js"></script>
+  <script src="/states/home.js"></script>
+  <script src="/states/addrecipe.js"></script>
+  <script src="/states/recipeview.js"></script>
+  <script src="/components/navbar.js"></script>
+  <script src="/components/sidebar.js"></script>
+  <script src="/components/recipeitem.js"></script>
+  <script src="/components/footer.js"></script>
+</head>
 
+<body ng-app="barnecue" layout="column">
+  <navbar></navbar>
+  <div layout="row" layout-padding>
+  <md-sidenav layout="column" md-is-locked-open='true'>
+    <sidebar></sidebar>
+  </md-sidenav>
+  <md-content flex layout="column" class="">
+    <ui-view></ui-view>
+  </md-content>
+  </div>
+  <footer></footer>
+</body>
 
-  </head>
-  <body ng-app="barnecue">
-    <navbar></navbar>
-    <div class="col-xs-2">
-      <sidebar></sidebar>
-    </div>
-    <div class="col-xs-10">
-      <ui-view></ui-view>
-    </div>
-    <footer></footer>
-
-  </body>
 </html>

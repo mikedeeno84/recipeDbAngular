@@ -1,7 +1,7 @@
  <h3>Add a Recipe</h3>
   <hr>
   <h2>Add your own</h2>
-  <form ng-submit="postRecipe()" name="recipeForm" ng-model="recipe">
+  <form ng-submit="post()" name="recipeForm" ng-model="recipe">
     
     <div class="form-group">
       <label for="author" class="control-label">Recipe By</label>
@@ -27,7 +27,7 @@
     </div>
     </div>    
     <div>
-    <button class="btn" type="button" id= "add-btn" ng-click="addIngredient()">Add Ingredient</button>
+    <md-button type="button" class="btn" id= "add-btn" ng-click="addIngredient()">Add Ingredient</md-button>
     </div>
 
     <div class="form-group">
@@ -38,7 +38,7 @@
     </div>
 
     <div>
-      <button type="submit" class="btn btn-primary" ng-disabled="recipeForm.$invalid">Submit</button>
+      <md-button type="submit" class="btn btn-primary" ng-disabled="recipeForm.$invalid">Submit</md-button>
     </div>
   
   </form>
@@ -46,6 +46,6 @@
     <div class ="form-group">
       <label for="RecipeUrl">Add Recipe From URL</label>
       <input name "RecipeUrl" ng-model="recipeUrl" ng-url required>
-      <button type="submit" class="btn btn-primary" ng-disabled="urlForm.$invalid">Submit Url</button>
+      <md-button type="submit" class="btn md-primary md-raised md-hue-1 urlSubmit" ng-disabled="urlForm.$invalid">Submit Url</md-button>
     </div>
   </form>

@@ -1,14 +1,32 @@
-<h1>{{recipe.title}}</h1>
-<label>Servings</label>
-<input type="number" ng-model="servings" placeholder="{{recipe.servings}}"/>
-<button ng-click="clickme()">update</button>
-<p>Total Time: {{recipe.total_time}}</p>
-<p>Prep Time: {{recipe.prep_time}}</p>
-<p>Cook Time: {{recipe.cook_time}}</p>
-<p>{{recipe.author}}</p>
-<h3>Ingredients</h3>
-<ul>
-<li ng-repeat="ingredient in recipe.ingredients track by $index">{{showIngredient(ingredient)}} {{ingredient.ingredient}}</li>
-</ul>
-<h2>Instructions</h2>
-<p>{{recipe.instructions}}</p>
+<div layout="column">
+  <h1 id="recipe-title">{{recipe.title}}</h1>
+  <div layout="row" layout-sm="column" layout-padding>
+    <div flex flex-sm="100" flex-gt-sm="66">
+      <img src="{{recipe.imageUrl}}" alt="{{recipe.title}}" style="width: 400px;">
+    </div>
+    <div flex flex-gt-sm="25" flex-sm="100" class="recipe-times" md-whiteframe>
+      <p><strong>{{recipe.title}}</strong></p>
+      <p>delete this recipe
+        <md-button ng-click="delete(recipe._id)" class="clickable md-primary">
+          <md-icon>clear</md-icon>
+        </md-button>
+      </p>
+      <label>Servings</label>
+      <input type="number" ng-model="servings" placeholder="{{recipe.servings}}" />
+      <p>Total Time: {{recipe.total_time}}</p>
+      <p>Prep Time: {{recipe.prep_time}}</p>
+      <p>Cook Time: {{recipe.cook_time}}</p>
+      <p>Author: {{recipe.author}}</p>
+    </div>
+    <div flex></div>
+  </div>
+  <h3>Ingredients</h3>
+  <ul>
+    <li class="recipe-ingredient" ng-repeat="ingredient in recipe.ingredients track by $index">{{showIngredient(ingredient)}} {{ingredient.ingredient}}</li>
+  </ul>
+  <md-divider></md-divider>
+  <div layout-padding>
+    <h2>Instructions</h2>
+    <p>{{recipe.instructions}}</p>
+  </div>
+</div>

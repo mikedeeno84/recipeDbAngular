@@ -14,7 +14,7 @@ return rp(siteURL)
 			directions += " " + $(this).text();
 		})
 	})
-
+	var imageUrl = $('img[itemprop=image][title="' + title + '"]')[0].attribs.src
 	var propertyTitles=[];
 	var propertyInfo=[];
 	var properties= {};
@@ -39,7 +39,7 @@ return rp(siteURL)
 	})
 	
 	var servings = parseInt($('.difficulty').find($('dd')).eq(0).text())
-	var recipe = {servings: servings, title: title, instructions: directions, author:name, ingredients:ingredients, total_time: properties['Total Time'], prep_time: properties['Prep'], cook_time:properties['Cook']};
+	var recipe = {servings: servings, title: title, instructions: directions, author:name, ingredients:ingredients, total_time: properties['Total Time'], prep_time: properties['Prep'], cook_time:properties['Cook'], imageUrl:imageUrl};
 return recipe;
 }).then(null, console.err)	
 }

@@ -1,21 +1,6 @@
-<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-items">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">My Recipes</a>
-    </div>
-    <div id="nav-items" class="collapse navbar-collapse" >
-      <ul class="nav navbar-nav">
-        <li><a ui-sref="homie">Home</a></li>
-        <li><a ui-sref="add">Add New Recipe</a></li>
-        <li><a href="/search">Recipe Search</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<md-toolbar class="md-hue-2" layout="row" layout-align="left center">
+    <a ui-sref="homie"><md-button>Home</md-button></a>
+    <a ui-sref="add"><md-button>Add New Recipe</md-button></a>
+    <a href="/cards"><md-button>Recipe cards</md-button></a>
+    <a href="/about"><md-button>About</md-button></a>
+</md-toolbar>

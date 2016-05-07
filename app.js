@@ -1,3 +1,7 @@
+if(!process.env.testing){
+    require('./db');
+}
+
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
@@ -13,9 +17,6 @@ app.use(express.static(__dirname + '/browser'));
 
 
 
-app.get("/", function (req, res, next){
-    res.sendFile(path.join(__dirname, "public/views/index.html"))
-});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,9 +34,13 @@ app.use(function (req, res, next) {
 
 });
 
-app.get('/*', function (req, res) {
-    res.sendFile(app.get('indexHTMLPath'));
+app.get("/*", function (req, res, next){
+    res.sendFile(path.join(__dirname, "public/views/index.html"))
 });
+
+// app.get('/*', function (req, res) {
+//     res.sendFile(app.get('indexHTMLPath'));
+// });
 
 // Error catching endware.
 app.use(function (err, req, res, next) {

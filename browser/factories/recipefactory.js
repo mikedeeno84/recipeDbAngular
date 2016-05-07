@@ -1,42 +1,49 @@
-app.factory('recipeFactory', function ($http){
+app.factory('Recipes', function ($http){
 	var fact = {
 		cachedRecipes:[]
 	}
-	fact.getAllRecipes = function(){
-		var recipeFactory = this;
+	fact.getAll = function(){
+		var Recipes = this;
 		return $http.get('/api/recipes')
 		.then(function(response){
-			recipeFactory.cachedRecipes = response.data;
-			return recipeFactory.cachedRecipes;
+			Recipes.cachedRecipes = response.data;
+			return Recipes.cachedRecipes;
 		}).then(null, console.error);
 	}
-	fact.getRecipeById = function(id){
+	fact.getById = function(id){
 		return $http.get('/api/recipes/' + id)
 		.then(function(response){
 			return response.data;
 		}).then(null, console.error);
 	}
-	fact.postRecipe = function(recipeObj){
-		var recipeFactory = this;
+	fact.post = function(recipeObj){
+		var Recipes = this;
 		return $http.post('api/recipes', recipeObj)
 		.then(function(response){
-			recipeFactory.cachedRecipes.push(response.data)
+			Recipes.cachedRecipes.push(response.data)
 			return response.data;
 		}).then(null, console.error);
 	}
 	fact.postByUrl = function(recipeUrl, recipeHost){
 
-		var recipeFactory = this;
+		var Recipes = this;
 		console.log(recipeHost)
 		return $http.post('api/recipes/fromsite/' + recipeHost, {url: recipeUrl})
 		.then(function(response){
-			recipeFactory.cachedRecipes.push(response.data)
+			Recipes.cachedRecipes.push(response.data)
 			return response.data;
 		}).then(null, console.error);
 	}
 
+	fact.delete = function (recipeId) {
+		return $http.delete('api/recipes/' + recipeId)
+			.then(function (response) {
+				return response.data;
+			});
+	}
+
 	fact.parseUrl = function(recipeUrl){
-		var recipeFactory = this;
+		var Recipes = this;
 		if(!recipeUrl) return;
 		var splitURL = recipeUrl.split('.');
 		console.log(splitURL)

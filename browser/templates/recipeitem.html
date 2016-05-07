@@ -1,1 +1,8 @@
-<div><a ui-sref="recipe({recipeId: recipe._id})"><p>{{recipe.title}}</p></a></div>
+<a ui-sref="recipe({recipeId: recipe._id})">
+	{{recipe.title}}
+	<md-tooltip md-direction="bottom">
+		Total Time: {{recipe.total_time}}
+		Prep Time: {{recipe.prep_time}}
+		Cook Time: {{recipe.cook_time}}
+	</md-tooltip>
+</a>
